@@ -1,0 +1,254 @@
+ <!doctype html>
+<html lang="sw">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MMANDA B2M  DATA - WiFi Login</title>
+  <style>
+    :root{--accent:#0b74de;--dark:#0b2436}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;margin:0;background:#f4f7fb;color:#102030}
+    header{background:linear-gradient(90deg,var(--accent),#0a9bd6);color:white;padding:18px 20px;display:flex;align-items:center;gap:16px}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo svg{width:56px;height:56px;border-radius:10px;background:rgba(255,255,255,0.12);padding:8px}
+    h1{font-size:20px;margin:0}
+    .tag{font-size:12px;opacity:.9}
+    main{max-width:980px;margin:24px auto;padding:18px}
+    .card{background:white;border-radius:12px;padding:16px;box-shadow:0 8px 24px rgba(16,32,48,0.06);margin-bottom:18px}
+    .marquee-wrap{overflow:hidden;border-radius:8px;background:linear-gradient(90deg,#fff,#f1fbff);padding:10px}
+    .marquee{display:inline-block;white-space:nowrap;padding-right:100%;animation:marquee 16s linear infinite}
+    @keyframes marquee{0%{transform:translateX(0%)}100%{transform:translateX(-50%)}}
+    form .row{display:flex;gap:8px;margin-bottom:10px}
+    input,select,button{font-size:15px;padding:10px;border-radius:8px;border:1px solid #dde6ef}
+    input[type=tel]{width:100%}
+    .btn{background:var(--accent);color:white;border:none;cursor:pointer}
+    .btn.secondary{background:#fff;color:var(--accent);border:1px solid var(--accent)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+    .package{border:1px dashed #e1eef8;padding:12px;border-radius:10px}
+    .package.selected{border-style:solid;box-shadow:0 6px 18px rgba(11,116,222,0.08)}
+    .small{font-size:13px;color:#41627a}
+    .center{text-align:center}
+    footer{font-size:13px;color:#456;opacity:.9;text-align:center;padding:16px}
+    .voucher{background:#0b74de;color:white;padding:12px;border-radius:8px;font-weight:600}
+    .hidden{display:none}
+    @media (max-width:520px){.marquee{animation-duration:22s}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <!-- simple attractive SVG logo; replace or customise -->
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MMANDA logo">
+        <rect x="6" y="6" width="88" height="88" rx="10" fill="white" opacity="0.70"/>
+        <path d="M20 72c12-28 40-26 56-12" stroke="red" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.95"/>
+        <circle cx="30" cy="36" r="8" fill="gold"/>
+        <text x="50" y="90" font-size="20" fill="yellow" font-family="Arial" text-anchor="middle">BARAKA</text>
+      </svg>
+      <div>
+        <img src="wifi_PNG62237.png"style="width:100px;height: auto;">
+        <h1>BARAKA -MMANDA DATA </h1>
+        <div class="tag">Any Regional — Fast & Simple WiFi login</div>
+      </div>
+    <!-- sehemu ya kubadisha picha -->
+     <div class="header-logo"></div>
+  
+      <marquee><img src="wifi_PNG62360.png"style="width:100px;height: auto;"><img src="Image-8153.jpg"style="width:100px;height: auto;"><img src="wifi_PNG62360.png"style="width:100px;height: auto;"></marquee>
+      <img src="image 1.jpg"style="width:100px;height: auto;">
+      <img src="wifi_PNG62237.png"style="width:100px;height: auto;">
+     </div>
+
+ </header>
+
+  <main>
+    <section class="card marquee-wrap">
+      <div class="marquee" id="priceMarquee">
+        <!-- JS will populate prices here -->
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Usajili / Login</h2>
+      <p class="small">Jisajili kwa namba ya simu (format: 07XXXXXXXX). Tafadhali chagua mkoa kabla ya kuendelea.</p>
+
+      <form id="authForm">
+        <div class="row">
+          <select id="region" required>
+            <option value="">Chagua Mkoa / Region</option>
+            <option>Dar es Salaam</option>
+            <option>Mwanza</option>
+            <option>Arusha</option>
+            <option>Mbeya</option>
+            <option>Ruvuma</option>
+            <option>All Regions (Any)</option>
+          </select>
+          <input type="tel" id="phone" placeholder="Namba ya simu (07.. )" required>
+        </div>
+        <div class="row">
+          <button type="button" class="btn" id="registerBtn">Jisajili / Register</button>
+          <button type="button" class="btn secondary" id="loginBtn">Login</button>
+        </div>
+      </form>
+
+      <div id="authMsg" class="small" style="margin-top:8px"></div>
+    </section>
+
+    <section class="card">
+      <h2>Chagua Bando / Packages</h2>
+      <div class="grid" id="packages">
+        <!-- packages inserted by JS -->
+      </div>
+      <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+        <button id="payBtn" class="btn">Lipa sasa (Simulate/Guide)</button>
+        <button id="generateVoucher" class="btn secondary">Generate Voucher (for testing)</button>
+      </div>
+      <p class="small" style="margin-top:10px">Baada ya malipo, mfumo utaunda voucher ya kipekee au utathibitishwa (simulated). Ili kuunganisha kweli, admin atahitaji kuingiza API ya M-Pesa / Tigo Pesa.</p>
+
+      <div id="voucherArea" style="margin-top:12px"></div>
+    </section>
+
+    <section class="card">
+      <h2>Admin / Data</h2>
+      <p class="small">Orodha ya watumiaji waliojisajili (hifadhi ndani ya browser kwa demo). Admin anaweza export JSON kwa ku-copy.</p>
+      <pre id="usersData" style="max-height:220px;overflow:auto;background:#f6fbff;padding:10px;border-radius:8px"></pre>
+      <div style="margin-top:10px">
+        <button id="exportBtn" class="btn secondary">Export JSON</button>
+        <button id="clearBtn" class="btn secondary">Clear Data</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>MMANDA WIFI • Designed for quick setup • Hifadhi data local kwa demo</div>
+  </footer>
+
+  <script>
+    // --- CONFIG: edit these values to match real business numbers / prices ---
+    const CONFIG = {
+      businessName: 'MMANDA DATA',
+      paymentInfo: 'Weka namba ya biashara hapa (M-Pesa / Tigo Pesa) au integrate API',
+      packages: [
+        { id:'p1', title:'24 saa - 500 TSh', desc:'24 saa (1GB)', price:500, duration:'24 hours' },
+        { id:'p2', title:'Siku 1 - 1000 TSh', desc:'Unlimited - 1 day', price:1000, duration:'1 day' },
+        { id:'p3', title:'Siku 7 - 5000 TSh', desc:'Unlimited - 7 days', price:5000, duration:'7 days' }
+      ]
+    }
+  
+
+    // populate marquee
+    const marquee = document.getElementById('priceMarquee');
+    marquee.innerHTML = CONFIG.packages.map(p=>`${p.title} — ${p.desc} • `).join(' \u00A0 \u00A0 ')+ ' | MMANDA DATA - ANY REGIONAL';
+
+    // populate packages
+    const packagesDiv = document.getElementById('packages');
+    CONFIG.packages.forEach(p=>{
+      const d = document.createElement('div'); d.className='package'; d.id=p.id;
+      d.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center"><strong>${p.title}</strong><span class="small">TSh ${p.price}</span></div><div class="small" style="margin-top:8px">${p.desc}</div><div style="margin-top:10px"><button class="btn selectBtn">Chagua</button></div>`;
+      packagesDiv.appendChild(d);
+    })
+
+    // selection logic
+    let selectedPackage = null;
+    packagesDiv.addEventListener('click', e=>{
+      if(e.target.classList.contains('selectBtn')){
+        const parent = e.target.closest('.package');
+        document.querySelectorAll('.package').forEach(el=>el.classList.remove('selected'));
+        parent.classList.add('selected');
+        selectedPackage = CONFIG.packages.find(p=>p.id===parent.id);
+      }
+    })
+
+    // localStorage users
+    function loadUsers(){
+      return JSON.parse(localStorage.getItem('mm_users')||'[]');
+    }
+    function saveUsers(u){ localStorage.setItem('mm_users',JSON.stringify(u)); renderUsers(); }
+    function renderUsers(){ document.getElementById('usersData').textContent = JSON.stringify(loadUsers(),null,2); }
+    renderUsers();
+
+    // register
+    document.getElementById('registerBtn').addEventListener('click',()=>{
+      const phone = document.getElementById('phone').value.trim();
+      const region = document.getElementById('region').value;
+      const msg = document.getElementById('authMsg');
+      if(!/^0[0-9]{8,9}$/.test(phone)){ msg.textContent='Tafadhali weka namba halali (anza na 0).'; return; }
+      if(!region){ msg.textContent='Chagua mkoa kwanza.'; return; }
+      const users = loadUsers();
+      if(users.find(u=>u.phone===phone)){ msg.textContent='Namba tayari imesajiliwa. Tafadhali ingia (Login).'; return; }
+      const user = { phone, region, createdAt:new Date().toISOString() };
+      users.push(user); saveUsers(users);
+      msg.textContent='Usajili umefanikiwa. Unaweza sasa kuchagua bando na kulipa.';
+    })
+
+    // login (simple)
+    document.getElementById('loginBtn').addEventListener('click',()=>{
+      const phone = document.getElementById('phone').value.trim();
+      const msg = document.getElementById('authMsg');
+      const users = loadUsers();
+      if(users.find(u=>u.phone===phone)){ msg.textContent='Umeingia kwa mafanikio. Karibu!'; } else { msg.textContent='Namba haijasajiliwa. Tafadhali jisajili.'; }
+    })
+
+    // payment simulation / guide
+    document.getElementById('payBtn').addEventListener('click',()=>{
+      const phone = document.getElementById('phone').value.trim();
+      const area = document.getElementById('region').value;
+      if(!phone || !area){ alert('Tafadhali weka namba na mkoa kabla ya kulipa.'); return; }
+      if(!selectedPackage){ alert('Chagua bando kwanza.'); return; }
+      // show modal-like instructions (simple)
+      const confirmMsg = `Toleo la DEMO: Ili kulipa kwa mfumo rasmi, admin lazima aingize credentials za M-Pesa/TigoPesa.
+
+Hapa tunabadilisha hatua kwa hatua:
+1) Weka kiasi: ${selectedPackage.price} TSh
+2) Omba mteja kufanya malipo kwa Business No (Weka namba yako ya Biashara)
+3) Baada ya malipo, bonyeza "Mark as paid" au tumia verification API
+
+(THIS IS A SIMULATION)
+`;
+      if(confirm(confirmMsg + '\nBonyeza OK ili simuate malipo na kupata voucher.')){
+        // simulate payment and create voucher
+        const v = generateVoucher(phone, selectedPackage);
+        showVoucher(v);
+      }
+    })
+
+    // Generate voucher (manual button)
+    document.getElementById('generateVoucher').addEventListener('click',()=>{
+      const phone = document.getElementById('phone').value.trim();
+      if(!phone){ alert('Weka namba ya simu kwanza.'); return; }
+      if(!selectedPackage){ alert('Chagua bando kwanza.'); return; }
+      const v = generateVoucher(phone, selectedPackage);
+      showVoucher(v);
+    })
+
+    function generateVoucher(phone, pkg){
+      const code = 'MM-'+Math.random().toString(36).substr(2,8).toUpperCase();
+      const expires = new Date();
+      if(pkg.id==='p1') expires.setHours(expires.getHours()+24);
+      if(pkg.id==='p2') expires.setDate(expires.getDate()+1);
+      if(pkg.id==='p3') expires.setDate(expires.getDate()+7);
+      const voucher = { code, phone, package:pkg.title, price:pkg.price, issuedAt:new Date().toISOString(), expires:expires.toISOString() };
+      const vdb = JSON.parse(localStorage.getItem('mm_vouchers')||'[]'); vdb.push(voucher); localStorage.setItem('mm_vouchers',JSON.stringify(vdb));
+      return voucher;
+    }
+
+    function showVoucher(v){
+      const area = document.getElementById('voucherArea');
+      area.innerHTML = `<div class="voucher">Voucher: ${v.code} — ${v.package} — TSh ${v.price}<div style="font-size:12px;margin-top:6px">Imetolewa kwa ${v.phone}. Exp: ${new Date(v.expires).toLocaleString()}</div></div>`;
+    }
+
+    // admin export/clear
+    document.getElementById('exportBtn').addEventListener('click',()=>{
+      const data = { users: loadUsers(), vouchers: JSON.parse(localStorage.getItem('mm_vouchers')||'[]') };
+      const txt = JSON.stringify(data,null,2);
+      prompt('Copy this JSON to backup / export', txt);
+    })
+    document.getElementById('clearBtn').addEventListener('click',()=>{ if(confirm('Futa data yote ya local (users & vouchers)?')){ localStorage.removeItem('mm_users'); localStorage.removeItem('mm_vouchers'); renderUsers(); document.getElementById('voucherArea').innerHTML=''; alert('Imefanywa.'); } })
+
+    // initial renderers
+    (function(){
+      renderUsers();
+    })();
+
+  </script>
+</body>
+</html>
+
+
